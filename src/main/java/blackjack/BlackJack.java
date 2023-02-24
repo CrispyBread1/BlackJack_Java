@@ -1,46 +1,26 @@
 package blackjack;
 
-import cards.Deck;
+import players.Dealer;
 import players.Player;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Random;
 
 public class BlackJack {
 
-    private ArrayList<Player> players;
-    private Deck deck;
+    private Player player;
+    private Dealer dealer;
 
-    public BlackJack(Deck deck){
-        this.players = new ArrayList<>();
+
+    public BlackJack(Player player, Dealer dealer){
+        this.player = player;
+        this.dealer = dealer;
     }
 
 
 // Initiates the game
 
 
-    public void initiateGame(Player player1, Player player2, Deck deck){
-        this.deck = deck;
-        addPlayersToGame(player1, player2);
-        getDeck();
-        for (int i = 0 ; i <= 2; i++){
-            addCardsToplayer();
-        }
-    }
-
-    public void addPlayersToGame(Player player1, Player player2){
-        if (players.size() < 2) {
-            players.add(player1);
-            players.add(player2);
-        }
-    }
-
-    public void addCardsToplayer(){
-        for (Player player : players){
-            Random randomCardIndex = new Random();
-            player.addCardToHand(deck.getRandomCard(randomCardIndex.nextInt(53)));
-        }
+    public void initiateGame(){
+        dealer.handCardsOut(player);
     }
 
 
@@ -48,39 +28,19 @@ public class BlackJack {
 
 
     public String playTheGame(){
-        HashMap<Integer, String> playersHandValues = new HashMap<>();
-        int topScore = 0;
-        for (Player player : players){
-            if (player.addHandValue() > topScore){
-                topScore = player.addHandValue();
-            }
-            playersHandValues.put(player.addHandValue(), player.getPlayerName());
-        }
-        return playersHandValues.get(topScore);
+        if (player.addHandValue() > dealer.addHandValue()){
+            return player.getPlayerName();
+        } else return dealer.getPlayerName();
     }
 
 
-// All the gets for tests
+// Gets for tests
 
 
-    public int getPlayerCardAmount(Player player){
-        int playerIndex =  this.players.indexOf(player);
-        Player playerToSeeCardAmount = this.players.get(playerIndex);
-        return playerToSeeCardAmount.getHandAmount();
+    public int getPlayerCardAmount(){
+        return player.getHandAmount();
     }
 
-    public int getPlayersAmount(){
-        return players.size();
-    }
-
-
-    public int getDeckCardAmount() {
-        return deck.getDeckSize();
-    }
-
-    public void getDeck(){
-        deck.generateDeck();
-    }
 
 
 }
