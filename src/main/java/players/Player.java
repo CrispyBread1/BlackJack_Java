@@ -12,5 +12,13 @@ public class Player extends PlayerPlays {
         super(name);
     }
 
+    public String playerTwistsORSticks(){
+        if (addHandValue() < 14){
+            return "Twist";
+        } else if (addHandValue() > 21) {
+            return "Bust";
+        } return "Stick";
+    }
+
 }
 

@@ -3,6 +3,8 @@ package blackjack;
 import players.Dealer;
 import players.Player;
 
+import java.util.Objects;
+
 
 public class BlackJack {
 
@@ -28,9 +30,15 @@ public class BlackJack {
 
 
     public String playTheGame(){
-        if (player.addHandValue() > dealer.addHandValue()){
+        String playerChoice;
+        playerChoice = dealer.checksForTwist(player);
+        System.out.println(playerChoice);
+        if (Objects.equals(playerChoice, "Stick")){
+            if (player.addHandValue() > dealer.addHandValue()){
             return player.getPlayerName();
+            } else return dealer.getPlayerName();
         } else return dealer.getPlayerName();
+
     }
 
 

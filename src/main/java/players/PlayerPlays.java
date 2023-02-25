@@ -25,6 +25,10 @@ public abstract class PlayerPlays {
         }
     }
 
+    public void twist(Card card){
+        hand.add(card);
+    }
+
     public int getHandAmount(){
         return hand.size();
     }

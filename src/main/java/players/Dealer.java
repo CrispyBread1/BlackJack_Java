@@ -2,6 +2,7 @@ package players;
 
 import cards.Deck;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class Dealer extends PlayerPlays{
@@ -23,9 +24,27 @@ public class Dealer extends PlayerPlays{
         }
     }
 
+    public void twist(Player player){
+        Random randomCardIndex = new Random();
+        player.twist(deck.getRandomCard(randomCardIndex.nextInt(53)));
+    }
+
     public void handCardToSelf(){
         Random randomCardIndex = new Random();
         addCardToHand(deck.getRandomCard(randomCardIndex.nextInt(53)));
+    }
+
+    public String checksForTwist(Player player){
+        Boolean playerReady= false;
+        while(!playerReady){
+            if (Objects.equals(player.playerTwistsORSticks(), "Twist")){
+                twist(player);
+            } else if (Objects.equals(player.playerTwistsORSticks(), "Stick")) {
+                playerReady = true;
+            } else if (Objects.equals(player.playerTwistsORSticks(), "Bust")) {
+                playerReady = true;
+            }
+        } return player.playerTwistsORSticks();
     }
 
 }

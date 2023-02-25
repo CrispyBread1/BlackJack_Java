@@ -31,11 +31,9 @@ public class BlackJackTest {
     }
 
     @Test
-    public void playersHasWon(){
+    public void playerHasWon(){
         blackJackGame.initiateGame();
-        assertEquals("Dan", blackJackGame.playTheGame());
+        assertEquals("Marcus", blackJackGame.playTheGame());
     }
-
-
 
 }
