@@ -31,13 +31,18 @@ public class BlackJack {
 
     public String playTheGame(){
         String playerChoice;
+        String dealerChoice;
         playerChoice = dealer.checksForTwist(player);
-        System.out.println(playerChoice);
-        if (Objects.equals(playerChoice, "Stick")){
+        dealerChoice = dealer.checksSelfForTwist();
+
+        if (Objects.equals(playerChoice, "Stick")&& Objects.equals(dealerChoice, "Stick")){
             if (player.addHandValue() > dealer.addHandValue()){
             return player.getPlayerName();
             } else return dealer.getPlayerName();
-        } else return dealer.getPlayerName();
+        } else if (Objects.equals(playerChoice, "Bust")){
+            return dealer.getPlayerName();
+        } return player.getPlayerName();
+
 
     }
 

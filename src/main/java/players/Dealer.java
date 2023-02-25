@@ -29,6 +29,12 @@ public class Dealer extends PlayerPlays{
         player.twist(deck.getRandomCard(randomCardIndex.nextInt(53)));
     }
 
+    public void dealerTwists(){
+        Random randomCardIndex = new Random();
+        twist(deck.getRandomCard(randomCardIndex.nextInt(53)));
+    }
+
+
     public void handCardToSelf(){
         Random randomCardIndex = new Random();
         addCardToHand(deck.getRandomCard(randomCardIndex.nextInt(53)));
@@ -45,6 +51,14 @@ public class Dealer extends PlayerPlays{
                 playerReady = true;
             }
         } return player.playerTwistsORSticks();
+    }
+
+    public String checksSelfForTwist(){
+        if (addHandValue() < 16){
+            dealerTwists();
+        } else if (addHandValue() > 21){
+            return "Bust";
+        } return "Stick";
     }
 
 }
