@@ -15,14 +15,29 @@ public class Dealer extends PlayerPlays{
         this.deck = deck;
     }
 
-    public void handCardsOut(Player player){
+//    Deals out cards to everyone
+
+    public void shufflesDeck(){
         deck.generateDeck();
+    }
+
+
+    public void handCardsOut(Player player){
         for (int i = 0 ; i <= 2; i++){
             Random randomCardIndex = new Random();
             player.addCardToHand(deck.getRandomCard(randomCardIndex.nextInt(53)));
             handCardToSelf();
         }
     }
+
+    public void handCardToSelf(){
+        Random randomCardIndex = new Random();
+        addCardToHand(deck.getRandomCard(randomCardIndex.nextInt(53)));
+    }
+
+
+//    Twist or stick or bust
+
 
     public void twist(Player player){
         Random randomCardIndex = new Random();
@@ -34,23 +49,18 @@ public class Dealer extends PlayerPlays{
         twist(deck.getRandomCard(randomCardIndex.nextInt(53)));
     }
 
-
-    public void handCardToSelf(){
-        Random randomCardIndex = new Random();
-        addCardToHand(deck.getRandomCard(randomCardIndex.nextInt(53)));
-    }
-
     public String checksForTwist(Player player){
         Boolean playerReady= false;
         while(!playerReady){
-            if (Objects.equals(player.playerTwistsORSticks(), "Twist")){
+            player.playerTwistsORSticks();
+            if (Objects.equals(player.getPlayersStickTwistBust(), "Twist")){
                 twist(player);
-            } else if (Objects.equals(player.playerTwistsORSticks(), "Stick")) {
+            } else if (Objects.equals(player.getPlayersStickTwistBust(), "Stick")) {
                 playerReady = true;
-            } else if (Objects.equals(player.playerTwistsORSticks(), "Bust")) {
+            } else if (Objects.equals(player.getPlayersStickTwistBust(), "Bust")) {
                 playerReady = true;
             }
-        } return player.playerTwistsORSticks();
+        } return player.getPlayersStickTwistBust();
     }
 
     public String checksSelfForTwist(){

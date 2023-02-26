@@ -6,19 +6,24 @@ import java.util.ArrayList;
 
 public class Player extends PlayerPlays {
 
-    String name;
+    private String name;
+
+    private String playerChoice;
 
     public Player(String name){
         super(name);
     }
 
-    public String playerTwistsORSticks(){
+    public void playerTwistsORSticks(){
         if (addHandValue() < 14){
-            return "Twist";
+            playerChoice = "Twist";
         } else if (addHandValue() > 21) {
-            return "Bust";
-        } return "Stick";
+            playerChoice = "Bust";
+        } playerChoice = "Stick";
     }
 
+    public String getPlayersStickTwistBust(){
+        return playerChoice;
+    }
 }
 

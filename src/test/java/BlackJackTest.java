@@ -12,14 +12,20 @@ public class BlackJackTest {
     BlackJack blackJackGame;
     Deck deck;
     Player player;
+    Player player2;
+    Player player3;
+    Player player4;
     Dealer dealer;
 
     @Before
     public void before(){
         deck = new Deck();
         player = new Player("Dan");
+        player2 = new Player("Ben");
+        player3 = new Player("Ashley");
+        player4 = new Player("James");
         dealer = new Dealer("Marcus", deck);
-        blackJackGame = new BlackJack(player, dealer);
+        blackJackGame = new BlackJack(dealer);
     }
 
 
@@ -27,11 +33,16 @@ public class BlackJackTest {
     @Test
     public void playersHaveCard(){
         blackJackGame.initiateGame();
+        blackJackGame.addPlayerToGame(player);
         assertEquals(2, blackJackGame.getPlayerCardAmount());
     }
 
     @Test
     public void playerHasWon(){
+        blackJackGame.addPlayerToGame(player);
+        blackJackGame.addPlayerToGame(player2);
+        blackJackGame.addPlayerToGame(player3);
+        blackJackGame.addPlayerToGame(player4);
         blackJackGame.initiateGame();
         assertEquals("Marcus", blackJackGame.playTheGame());
     }
