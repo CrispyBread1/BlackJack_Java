@@ -15,6 +15,11 @@ public class Player extends PlayerPlays {
     }
 
     public void playerTwistsORSticks(){
+        for (Card card : getHand()){
+            if (card.getValue() == 1){
+                playerChoice = twistWithACE(card);
+            }
+        }
         if (addHandValue() < 14){
             playerChoice = "Twist";
         } else if (addHandValue() > 21) {
@@ -25,5 +30,6 @@ public class Player extends PlayerPlays {
     public String getPlayersStickTwistBust(){
         return playerChoice;
     }
+
 }
 

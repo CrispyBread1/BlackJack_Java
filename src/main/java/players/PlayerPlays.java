@@ -60,4 +60,28 @@ public abstract class PlayerPlays {
         }
         return handValue;
     }
+
+    public ArrayList<Card> getHand(){
+        return hand;
+    }
+
+    public String twistWithACE(Card card){
+        int handValueWithOne = addHandValue();
+        card.changeToEleven();
+        int handValueWithEleven = addHandValue();
+        if (handValueWithEleven > handValueWithOne && handValueWithEleven < 14){
+            return "Twist";
+        } else if (handValueWithEleven > handValueWithOne && handValueWithEleven > 14 && handValueWithEleven <= 21){
+            return "Stick";
+        } else  if (handValueWithEleven > 21){
+            card.changeToOne();
+            if (addHandValue() < 21){
+                return "Stick";
+            }  return "Bust";
+
+        }  return "Stick";
+
+    }
+
+
 }

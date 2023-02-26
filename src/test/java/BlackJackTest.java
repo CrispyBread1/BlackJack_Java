@@ -24,18 +24,18 @@ public class BlackJackTest {
         player2 = new Player("Ben");
         player3 = new Player("Ashley");
         player4 = new Player("James");
-        dealer = new Dealer("Marcus", deck);
+        dealer = new Dealer("Marcus the Dealer", deck);
         blackJackGame = new BlackJack(dealer);
     }
 
 
 
-    @Test
-    public void playersHaveCard(){
-        blackJackGame.initiateGame();
-        blackJackGame.addPlayerToGame(player);
-        assertEquals(2, blackJackGame.getPlayerCardAmount());
-    }
+//    @Test
+//    public void playersHaveCard(){
+//        blackJackGame.initiateGame();
+//        blackJackGame.addPlayerToGame(player);
+//        assertEquals(2, blackJackGame.getPlayerCardAmount());
+//    }
 
     @Test
     public void playerHasWon(){

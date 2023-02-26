@@ -20,5 +20,13 @@ public class Card {
         return this.value;
     }
 
+    public void changeToEleven(){
+        this.value = 11;
+    }
+
+    public void changeToOne(){
+        this.value = 1;
+    }
+
 
 }
