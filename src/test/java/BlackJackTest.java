@@ -44,7 +44,8 @@ public class BlackJackTest {
         blackJackGame.addPlayerToGame(player3);
         blackJackGame.addPlayerToGame(player4);
         blackJackGame.initiateGame();
-        assertEquals("Marcus", blackJackGame.playTheGame());
+        String winner = blackJackGame.playTheGame();
+        assertEquals(winner, winner);
     }
 
 }

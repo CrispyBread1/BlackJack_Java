@@ -21,10 +21,14 @@ public class Player extends PlayerPlays {
             }
         }
         if (addHandValue() < 14){
+            System.out.println(getPlayerName() + " is Twisting");
             playerChoice = "Twist";
         } else if (addHandValue() > 21) {
+            System.out.println(getPlayerName() + " is Bust");
             playerChoice = "Bust";
-        } playerChoice = "Stick";
+        }
+        System.out.println(getPlayerName() + " is Sticking");
+        playerChoice = "Stick";
     }
 
     public String getPlayersStickTwistBust(){

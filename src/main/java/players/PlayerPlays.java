@@ -19,6 +19,10 @@ public abstract class PlayerPlays {
         this.loss = 0;
     }
 
+    public String getPlayerName(){
+        return this.name;
+    }
+
     public void addCardToHand(Card card) {
         if (hand.size() < 2) {
             hand.add(card);
@@ -33,9 +37,7 @@ public abstract class PlayerPlays {
         return hand.size();
     }
 
-    public String getPlayerName(){
-        return this.name;
-    }
+
 
     public void wonGame(){
         this.win += 1;
@@ -66,20 +68,28 @@ public abstract class PlayerPlays {
     }
 
     public String twistWithACE(Card card){
+        System.out.println(getPlayerName() + " has an ACE");
         int handValueWithOne = addHandValue();
         card.changeToEleven();
         int handValueWithEleven = addHandValue();
         if (handValueWithEleven > handValueWithOne && handValueWithEleven < 14){
+            System.out.println(getPlayerName() + " is Twisting and Ace is now 11");
             return "Twist";
         } else if (handValueWithEleven > handValueWithOne && handValueWithEleven > 14 && handValueWithEleven <= 21){
+            System.out.println(getPlayerName() + " is Sticking with ace as 11");
             return "Stick";
         } else  if (handValueWithEleven > 21){
             card.changeToOne();
             if (addHandValue() < 21){
+                System.out.println(getPlayerName() + " is Stikcing with ace value 1 as ace value 11 total is over 21");
                 return "Stick";
-            }  return "Bust";
+            }
+            System.out.println(getPlayerName() + " is Bust with ace 11 or 1");
+            return "Bust";
 
-        }  return "Stick";
+        }
+        System.out.println(getPlayerName() + " is Sticking with ace as 11");
+        return "Stick";
 
     }
 

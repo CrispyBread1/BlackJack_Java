@@ -65,10 +65,14 @@ public class Dealer extends PlayerPlays{
 
     public String checksSelfForTwist(){
         if (addHandValue() < 16){
+            System.out.println(getPlayerName() + " is Twisting");
             dealerTwists();
         } else if (addHandValue() > 21){
+            System.out.println(getPlayerName() + " is Bust");
             return "Bust";
-        } return "Stick";
+        }
+        System.out.println(getPlayerName() + " is Bust");
+        return "Stick";
     }
 
 }
